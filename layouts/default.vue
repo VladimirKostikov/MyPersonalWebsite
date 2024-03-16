@@ -13,7 +13,7 @@
         </div>
     </div>
     <header class="fixed text-white w-full top-5">
-        <div class="w-max mx-auto flex gap-20">
+        <div class="sm:w-full md:w-max mx-auto flex justify-around  md:gap-10 lg:gap-20">
             <div class="hover:text-slate-200">
                 <NuxtLink to="/about" class="flex gap-3 border-0"><span class="text-green">•</span>About me</NuxtLink>
             </div>
