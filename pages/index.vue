@@ -1,10 +1,18 @@
 <template>
+    <div class="fixed w-full top-0 left-0 h-full bg-[#333] rounded-xl overflow-hidden bg-opacity-50" v-if="project != 0">
+        <component :is="Project" 
+            :title="'PSM / PHP SIMPLE MVC'" 
+            :link="'www.test.ru'"
+            v-if="project == 1"
+        />
+        <div class="w-full p-3 bg-green text-center font-bold max-w-[540px] mx-auto left-0 right-0 fixed bottom-[70px] rounded-lg h-max">Close element</div>
+    </div>
     <section class="w-full h-screen flex items-center">
         <component :is="Particles" />
         <div class="w-max mx-auto text-white">
             <div class="uppercase text-white font-bold text-4xl text-center"><span>Hi, I'm</span></div>
             <div class="uppercase text-green font-bold text-7xl text-center my-6"><span>Vladimir Kostikov</span></div>
-            <div class="uppercase text-slate-300 font-bold text-2xl text-center"><span>Web Developer</span></div>
+            <div class="uppercase text-slate-300 font-bold text-2xl text-center"><span>Web Developer</span> </div>
             <div class="flex mt-10 w-max mx-auto gap-10">
                 <div class="hover:bg-darkgreen hover:text-white hover:border-darkgreen border-2 rounded-lg uppercase font-bold cursor-pointer border-slate-200 text-slate-200 py-3 px-5"><span>View my projects</span></div>
                 <div class="hover:bg-darkgreen hover:text-white hover:border-darkgreen border-2 rounded-lg uppercase font-bold cursor-pointer border-slate-200 text-slate-200 py-3 px-5"><span>Contact me</span></div>
@@ -274,24 +282,33 @@
             </div>
         </div>
     </section>
+
+    <section class="w-full h-screen bg-gradient-to-b from-navy-100 to-navy-200 flex items-center">
+        <div class="w-max gap-10 mx-auto max-w-[1200px]">
+            <div class="w-full">
+                <div class="text-slate-200 text-5xl text-white font-bold text-left pb-5 border-b-2 border-green w-max  mx-auto  "><span>Projects</span></div>
+                <div class="flex">
+                    1
+                </div>
+            </div>
+        </div>
+    </section>
 </template>
 
 <script setup lang="ts">
     import { Particles } from '#components'
+    import { Project } from '#components'
 
     const title = ref('Vladimir Kostikov - web developer')
     const description = ref('My App Description')
 
-    // This will be reactive when you change title/description above
+    let project:number = 0;
+
     useHead({
-    title,
-    meta: [{
-        name: 'description',
-        content: description
-    }]
+        title,
+        meta: [{
+            name: 'description',
+            content: description
+        }]
     })
-
-
-    
-
 </script>
