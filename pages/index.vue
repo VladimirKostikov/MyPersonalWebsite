@@ -1,11 +1,69 @@
 <template>
-    <div class="fixed w-full top-0 left-0 h-full bg-[#333] rounded-xl overflow-hidden bg-opacity-50" v-if="project != 0">
+    <div class="fixed w-full top-0 left-0 h-full bg-[#333] rounded-xl overflow-hidden bg-opacity-50" v-if="slide">
         <component :is="Project" 
-            :title="'PSM / PHP SIMPLE MVC'" 
-            :link="'www.test.ru'"
-            v-if="project == 1"
+            :title="'Authmaster Telegram'" 
+            :link="'https://github.com/VladimirKostikov/authmaster-telegram-authorization'"
+            :img = "'/assets/img/git2.jpg'"
+            :description = "'Intermediary between HTTPS requests for quick registration via Telegram. The project was created to simplify authorization using telegram, offering a universal solution'"
+            v-if="slide == 1"
         />
-        <div class="w-full p-3 bg-green text-center font-bold max-w-[540px] mx-auto left-0 right-0 fixed bottom-[70px] rounded-lg h-max">Close element</div>
+        <component :is="Project" 
+            :title="'SliderCraft'" 
+            :link="'https://github.com/VladimirKostikov/Slidercraft-JS'"
+            :img = "'/assets/img/git3.png'"
+            :description = "'A small tool for quickly creating a slider. The project was implemented for practice and training purposes'"
+            v-if="slide == 2"
+        />
+        <component :is="Project" 
+            :title="'PHP Simple MVC'" 
+            :link="'https://github.com/VladimirKostikov/PSM-Php-Simple-MVC'"
+            :img = "'/assets/img/git1.png'"
+            :description = "'Self-written MVC script in PHP. The project was implemented for practice and training purposes'"
+            v-if="slide == 3"
+        />
+
+        <component :is="Project" 
+            :title="'Bizonsnab.ru'" 
+            :link="'https://bizonsnab.ru'"
+            :img = "'/assets/img/git4.webp'"
+            :description = "'Two-page website based on Laravel. The site is designed for ordering, evaluating, and paying for garbage containers'"
+            v-if="slide == 4"
+        />
+
+        <component :is="Project" 
+            :title="'Highskill.gg'" 
+            :link="'https://highskill.gg/'"
+            :img = "'/assets/img/git5.webp'"
+            :description = "'A website for training eSports players. Not working at the moment'"
+            v-if="slide == 5"
+        />
+
+
+        <component :is="Project" 
+            :title="'Fifasell.ru'" 
+            :link="'https://fifasell.ru/'"
+            :img = "'/assets/img/git6.webp'"
+            :description = "'Website for buying coins in FIFA'"
+            v-if="slide == 6"
+        />
+
+
+        <component :is="Project" 
+            :title="'Systemads.in'" 
+            :link="'https://systemads.in/'"
+            :img = "'/assets/img/git7.webp'"
+            :description = "'Internet traffic exchange'"
+            v-if="slide == 7"
+        />
+
+        <component :is="Project" 
+            :title="'Elbai.pro'" 
+            :link="'https://elbai.pro/'"
+            :img = "'/assets/img/git8.webp'"
+            :description = "'Elbai business consulting company website'"
+            v-if="slide == 8"
+        />
+        <div @click="setSlide(0)" class="hover:border-2 hover:bg-green hover:bg-navy-100 hover:text-white cursor-pointer w-full p-3 bg-green text-center font-bold max-w-[540px] mx-auto left-0 right-0 fixed bottom-[70px] rounded-lg h-max">Close element</div>
     </div>
     <section class="w-full h-screen flex items-center">
         <component :is="Particles" />
@@ -13,55 +71,43 @@
             <div class="uppercase text-white font-bold text-4xl text-center"><span>Hi, I'm</span></div>
             <div class="uppercase text-green font-bold text-7xl text-center my-6"><span>Vladimir Kostikov</span></div>
             <div class="uppercase text-slate-300 font-bold text-2xl text-center"><span>Web Developer</span> </div>
-            <div class="flex mt-10 w-max mx-auto gap-10">
-                <div class="hover:bg-darkgreen hover:text-white hover:border-darkgreen border-2 rounded-lg uppercase font-bold cursor-pointer border-slate-200 text-slate-200 py-3 px-5"><span>View my projects</span></div>
-                <div class="hover:bg-darkgreen hover:text-white hover:border-darkgreen border-2 rounded-lg uppercase font-bold cursor-pointer border-slate-200 text-slate-200 py-3 px-5"><span>Contact me</span></div>
+            <div class="lg:flex mt-10 w-max mx-auto gap-10">
+                <div @click="scrollToElement('projects')" class="text-center mb-5 hover:bg-darkgreen hover:text-white hover:border-darkgreen border-2 rounded-lg uppercase font-bold cursor-pointer border-slate-200 text-slate-200 py-3 px-5"><span>View my projects</span></div>
+                <div @click="scrollToElement('contacts')" class="text-center mb-5 hover:bg-darkgreen hover:text-white hover:border-darkgreen border-2 rounded-lg uppercase font-bold cursor-pointer border-slate-200 text-slate-200 py-3 px-5"><span>Contact me</span></div>
             </div>
         </div>
     </section>
-    <section class="w-full h-screen bg-gradient-to-b from-navy-100 to-navy-200 flex items-center">
-        <div class="w-max flex gap-10 mx-auto justify-between max-w-[1200px]">
+    <section class="w-full p-7 lg:p-0 h-full bg-gradient-to-b from-navy-100 to-navy-200 flex items-center" id="about">
+        <div class="w-full lg:flex gap-10 mx-auto justify-between max-w-[1200px]">
             <div class="w-full">
-                <div class="text-slate-200 text-5xl text-white font-bold text-left pb-5 border-b-2 border-green w-max   "><span>About me</span></div>
-                <div class="my-10 max-w-[1200px] text-white text-2xl text-left">
+                <div class="text-center lg:text-left text-slate-200 text-5xl text-white font-bold  pb-5 border-b-2 border-green lg:w-max   "><span>About me</span></div>
+                <div class="text-center lg:text-left my-10 max-w-[1200px] text-white text-2xl ">
                         <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo at deleniti, commodi tenetur incidunt temporibus eius rem voluptate? Nam dolore illum exercitationem voluptatum libero unde, vitae fugit modi blanditiis cum doloremque vero ea voluptates odio itaque nemo molestias, corrupti aliquam veniam deleniti quia animi, tenetur culpa. Nostrum, libero voluptate.</span>
                 </div>
             </div>
-            <div class="w-full grid grid-cols-2 ">
-                <div class="border-2 w-[170px] h-[170px] p-5  flex items-center mx-auto rounded-full border-green ">
+            <div class="w-full grid grid-cols-1 lg:grid-cols-2 items-center ">
+                <div class="border-2 mb-5 lg:mb-0 w-[170px] h-[170px] p-5  flex items-center mx-auto rounded-full border-green ">
                     <div class="block text-center w-full">
-                        <div class="text-[36px] font-bold text-green">6</div>
+                        <div class="text-[36px] font-bold text-green">4</div>
                         <div class="text-[13px] font-bold text-green uppercase">years of experience</div>
                     </div>
                 </div>
-                <div class="border-2 w-[170px] h-[170px] p-5  flex items-center mx-auto rounded-full border-green ">
+                <div class="border-2 mb-5 lg:mb-0 w-[170px] h-[170px] p-5  flex items-center mx-auto rounded-full border-green ">
                     <div class="block text-center w-full">
                         <div class="text-[36px] font-bold text-green">>50</div>
                         <div class="text-[13px] font-bold text-green uppercase">orders completed</div>
-                    </div>
-                </div>
-                <div class="border-2 w-[170px] h-[170px] p-5  flex items-center mx-auto rounded-full border-green ">
-                    <div class="block text-center w-full">
-                        <div class="text-[36px] font-bold text-green">5</div>
-                        <div class="text-[13px] font-bold text-green uppercase">years of experience</div>
-                    </div>
-                </div>
-                <div class="border-2 w-[170px] h-[170px] p-5  flex items-center mx-auto rounded-full border-green ">
-                    <div class="block text-center w-full">
-                        <div class="text-[36px] font-bold text-green">5</div>
-                        <div class="text-[13px] font-bold text-green uppercase">years of experience</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="w-full h-screen bg-gradient-to-t from-navy-100 to-navy-200 flex items-center">
-        <div class="w-full mx-auto  max-w-[1200px]">
+    <section class="w-full p-5 lg:p-0 h-full bg-gradient-to-t from-navy-100 to-navy-200 flex items-center" id="experience">
+        <div class="w-full mx-auto  max-w-[700px] lg:max-w-[1200px]">
             <div class="text-slate-200 text-5xl text-white font-bold text-left pb-5 border-b-2 border-green w-max  mx-auto  "><span>Experience</span></div>
             
-            <div class="w-full grid grid-cols-4 gap-10 mt-10">
-                <div class="shadow-lg border-2 border-green py-7 px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
+            <div class="w-full grid grid-cols-2 lg:grid-cols-4 gap-10 mt-10">
+                <div class="shadow-lg border-2 border-green py-7 px-5 lg:px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" class="group-hover:fill-white w-[24px] fill-slate-200" viewBox="0 0 384 512"><path d="M0 32l34.9 395.8L191.5 480l157.6-52.2L384 32H0zm308.2 127.9H124.4l4.1 49.4h175.6l-13.6 148.4-97.9 27v.3h-1.1l-98.7-27.3-6-75.8h47.7L138 320l53.5 14.5 53.7-14.5 6-62.2H84.3L71.5 112.2h241.1l-4.4 47.7z"/></svg>
                     </div>
@@ -70,7 +116,7 @@
                     </div>
                 </div>
 
-                <div class="shadow-lg border-2 border-green py-7 px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
+                <div class="shadow-lg border-2 border-green py-7 px-5 lg:px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" class="group-hover:fill-white w-[24px] fill-slate-200" viewBox="0 0 384 512"><path d="M0 32l34.9 395.8L192 480l157.1-52.2L384 32H0zm313.1 80l-4.8 47.3L193 208.6l-.3 .1h111.5l-12.8 146.6-98.2 28.7-98.8-29.2-6.4-73.9h48.9l3.2 38.3 52.6 13.3 54.7-15.4 3.7-61.6-166.3-.5v-.1l-.2 .1-3.6-46.3L193.1 162l6.5-2.7H76.7L70.9 112h242.2z"/></svg>
                     </div>
@@ -79,7 +125,7 @@
                     </div>
                 </div>
 
-                <div class="shadow-lg border-2 border-green py-7 px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
+                <div class="shadow-lg border-2 border-green py-7 px-5 lg:px-10items-center group rounded-lg flex justify-between w-full max-w-[300px]">
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" class="group-hover:fill-white w-[24px] fill-slate-200" viewBox="0 0 448 512"><path d="M0 32v448h448V32H0zm243.8 349.4c0 43.6-25.6 63.5-62.9 63.5-33.7 0-53.2-17.4-63.2-38.5l34.3-20.7c6.6 11.7 12.6 21.6 27.1 21.6 13.8 0 22.6-5.4 22.6-26.5V237.7h42.1v143.7zm99.6 63.5c-39.1 0-64.4-18.6-76.7-43l34.3-19.8c9 14.7 20.8 25.6 41.5 25.6 17.4 0 28.6-8.7 28.6-20.8 0-14.4-11.4-19.5-30.7-28l-10.5-4.5c-30.4-12.9-50.5-29.2-50.5-63.5 0-31.6 24.1-55.6 61.6-55.6 26.8 0 46 9.3 59.8 33.7L368 290c-7.2-12.9-15-18-27.1-18-12.3 0-20.1 7.8-20.1 18 0 12.6 7.8 17.7 25.9 25.6l10.5 4.5c35.8 15.3 55.9 31 55.9 66.2 0 37.8-29.8 58.6-69.7 58.6z"/></svg>
                     </div>
@@ -88,7 +134,7 @@
                     </div>
                 </div>
 
-                <div class="shadow-lg border-2 border-green py-7 px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
+                <div class="shadow-lg border-2 border-green py-7 px-5 lg:px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" class="group-hover:fill-white w-[24px] fill-slate-200" viewBox="0 0 640 512"><path d="M320 104.5c171.4 0 303.2 72.2 303.2 151.5S491.3 407.5 320 407.5c-171.4 0-303.2-72.2-303.2-151.5S148.7 104.5 320 104.5m0-16.8C143.3 87.7 0 163 0 256s143.3 168.3 320 168.3S640 349 640 256 496.7 87.7 320 87.7zM218.2 242.5c-7.9 40.5-35.8 36.3-70.1 36.3l13.7-70.6c38 0 63.8-4.1 56.4 34.3zM97.4 350.3h36.7l8.7-44.8c41.1 0 66.6 3 90.2-19.1 26.1-24 32.9-66.7 14.3-88.1-9.7-11.2-25.3-16.7-46.5-16.7h-70.7L97.4 350.3zm185.7-213.6h36.5l-8.7 44.8c31.5 0 60.7-2.3 74.8 10.7 14.8 13.6 7.7 31-8.3 113.1h-37c15.4-79.4 18.3-86 12.7-92-5.4-5.8-17.7-4.6-47.4-4.6l-18.8 96.6h-36.5l32.7-168.6zM505 242.5c-8 41.1-36.7 36.3-70.1 36.3l13.7-70.6c38.2 0 63.8-4.1 56.4 34.3zM384.2 350.3H421l8.7-44.8c43.2 0 67.1 2.5 90.2-19.1 26.1-24 32.9-66.7 14.3-88.1-9.7-11.2-25.3-16.7-46.5-16.7H417l-32.8 168.7z"/></svg>
                     </div>
@@ -97,7 +143,7 @@
                     </div>
                 </div>
 
-                <div class="shadow-lg border-2 border-green py-7 px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
+                <div class="shadow-lg border-2 border-green py-7 px-5 lg:px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" class="group-hover:fill-white w-[24px] fill-slate-200" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
                     </div>
@@ -106,7 +152,7 @@
                     </div>
                 </div>
 
-                <div class="shadow-lg border-2 border-green py-7 px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
+                <div class="shadow-lg border-2 border-green py-7 px-5 lg:px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" class="group-hover:fill-white w-[24px] fill-slate-200" viewBox="0 0 576 512"><path d="M288 288h-32v-64h32v64zm288-128v192H288v32H160v-32H0V160h576zm-416 32H32v128h64v-96h32v96h32V192zm160 0H192v160h64v-32h64V192zm224 0H352v128h64v-96h32v96h32v-96h32v96h32V192z"/></svg>
                     </div>
@@ -115,7 +161,7 @@
                     </div>
                 </div>
 
-                <div class="shadow-lg border-2 border-green py-7 px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
+                <div class="shadow-lg border-2 border-green py-7 px-5 lg:px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" class="group-hover:fill-white w-[24px] fill-slate-200" viewBox="0 0 640 512"><path d="M349.9 236.3h-66.1v-59.4h66.1v59.4zm0-204.3h-66.1v60.7h66.1V32zm78.2 144.8H362v59.4h66.1v-59.4zm-156.3-72.1h-66.1v60.1h66.1v-60.1zm78.1 0h-66.1v60.1h66.1v-60.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4 .4 67.6 .1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1l-13.3-8.9zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm-78.1-72.1h-66.1v60.1h66.1v-60.1z"/></svg>
                     </div>
@@ -124,7 +170,7 @@
                     </div>
                 </div>
 
-                <div class="shadow-lg border-2 border-green py-7 px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
+                <div class="shadow-lg border-2 border-green py-7 px-5 lg:px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" class="group-hover:fill-white w-[24px] fill-slate-200" viewBox="0 0 512 512"><path d="M234.5 5.7c13.9-5 29.1-5 43.1 0l192 68.6C495 83.4 512 107.5 512 134.6V377.4c0 27-17 51.2-42.5 60.3l-192 68.6c-13.9 5-29.1 5-43.1 0l-192-68.6C17 428.6 0 404.5 0 377.4V134.6c0-27 17-51.2 42.5-60.3l192-68.6zM256 66L82.3 128 256 190l173.7-62L256 66zm32 368.6l160-57.1v-188L288 246.6v188z"/></svg>
                     </div>
@@ -133,7 +179,7 @@
                     </div>
                 </div>
 
-                <div class="shadow-lg border-2 border-green py-7 px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
+                <div class="shadow-lg border-2 border-green py-7 px-5 lg:px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" class="group-hover:fill-white w-[24px] fill-slate-200" viewBox="0 0 512 512"><path d="M504.4 115.8a5.7 5.7 0 0 0 -.3-.7 8.5 8.5 0 0 0 -.5-1.3 6 6 0 0 0 -.5-.7 9.4 9.4 0 0 0 -.7-.9c-.2-.2-.5-.4-.8-.6a8.8 8.8 0 0 0 -.9-.7L404.4 55.6a8 8 0 0 0 -8 0L300.1 111h0a8.1 8.1 0 0 0 -.9 .7 7.7 7.7 0 0 0 -.8 .6 8.2 8.2 0 0 0 -.7 .9c-.2 .2-.4 .5-.5 .7a9.7 9.7 0 0 0 -.5 1.3c-.1 .2-.2 .4-.3 .7a8.1 8.1 0 0 0 -.3 2.1V223.2l-80.2 46.2V63.4a7.8 7.8 0 0 0 -.3-2.1c-.1-.2-.2-.5-.3-.7a8.4 8.4 0 0 0 -.5-1.2c-.1-.3-.4-.5-.5-.7a9.4 9.4 0 0 0 -.7-.9 9.5 9.5 0 0 0 -.8-.6 9.8 9.8 0 0 0 -.9-.7h0L115.6 1.1a8 8 0 0 0 -8 0L11.3 56.5h0a6.5 6.5 0 0 0 -.9 .7 7.8 7.8 0 0 0 -.8 .6 8.2 8.2 0 0 0 -.7 .9c-.2 .3-.4 .5-.6 .7a7.9 7.9 0 0 0 -.5 1.2 6.5 6.5 0 0 0 -.3 .7 8.2 8.2 0 0 0 -.3 2.1v329.7a8 8 0 0 0 4 7l192.5 110.8a8.8 8.8 0 0 0 1.3 .5c.2 .1 .4 .2 .6 .3a7.9 7.9 0 0 0 4.1 0c.2-.1 .4-.2 .6-.2a8.6 8.6 0 0 0 1.4-.6L404.4 400.1a8 8 0 0 0 4-7V287.9l92.2-53.1a8 8 0 0 0 4-7V117.9A8.6 8.6 0 0 0 504.4 115.8zM111.6 17.3h0l80.2 46.2-80.2 46.2L31.4 63.4zm88.3 60V278.6l-46.5 26.8-33.7 19.4V123.5l46.5-26.8zm0 412.8L23.4 388.5V77.3L57.1 96.7l46.5 26.8V338.7a6.9 6.9 0 0 0 .1 .9 8 8 0 0 0 .2 1.2h0a5.9 5.9 0 0 0 .4 .9 6.4 6.4 0 0 0 .4 1v0a8.5 8.5 0 0 0 .6 .8 7.6 7.6 0 0 0 .7 .8l0 0c.2 .2 .5 .4 .8 .6a8.9 8.9 0 0 0 .9 .7l0 0 0 0 92.2 52.2zm8-106.2-80.1-45.3 84.1-48.4 92.3-53.1 80.1 46.1-58.8 33.6zm184.5 4.6L215.9 490.1V397.8L346.6 323.2l45.8-26.2zm0-119.1L358.7 250l-46.5-26.8V131.8l33.7 19.4L392.4 178zm8-105.3-80.2-46.2 80.2-46.2 80.2 46.2zm8 105.3V178L455 151.2l33.7-19.4v91.4h0z"/></svg>
                     </div>
@@ -142,7 +188,7 @@
                     </div>
                 </div>
 
-                <div class="shadow-lg border-2 border-green py-7 px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
+                <div class="shadow-lg border-2 border-green py-7 px-5 lg:px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" class="group-hover:fill-white w-[24px] fill-slate-200" viewBox="0 0 448 512"><path d="M224 508c-6.7 0-13.5-1.8-19.4-5.2l-61.7-36.5c-9.2-5.2-4.7-7-1.7-8 12.3-4.3 14.8-5.2 27.9-12.7 1.4-.8 3.2-.5 4.6 .4l47.4 28.1c1.7 1 4.1 1 5.7 0l184.7-106.6c1.7-1 2.8-3 2.8-5V149.3c0-2.1-1.1-4-2.9-5.1L226.8 37.7c-1.7-1-4-1-5.7 0L36.6 144.3c-1.8 1-2.9 3-2.9 5.1v213.1c0 2 1.1 4 2.9 4.9l50.6 29.2c27.5 13.7 44.3-2.4 44.3-18.7V167.5c0-3 2.4-5.3 5.4-5.3h23.4c2.9 0 5.4 2.3 5.4 5.3V378c0 36.6-20 57.6-54.7 57.6-10.7 0-19.1 0-42.5-11.6l-48.4-27.9C8.1 389.2 .7 376.3 .7 362.4V149.3c0-13.8 7.4-26.8 19.4-33.7L204.6 9c11.7-6.6 27.2-6.6 38.8 0l184.7 106.7c12 6.9 19.4 19.8 19.4 33.7v213.1c0 13.8-7.4 26.7-19.4 33.7L243.4 502.8c-5.9 3.4-12.6 5.2-19.4 5.2zm149.1-210.1c0-39.9-27-50.5-83.7-58-57.4-7.6-63.2-11.5-63.2-24.9 0-11.1 4.9-25.9 47.4-25.9 37.9 0 51.9 8.2 57.7 33.8 .5 2.4 2.7 4.2 5.2 4.2h24c1.5 0 2.9-.6 3.9-1.7s1.5-2.6 1.4-4.1c-3.7-44.1-33-64.6-92.2-64.6-52.7 0-84.1 22.2-84.1 59.5 0 40.4 31.3 51.6 81.8 56.6 60.5 5.9 65.2 14.8 65.2 26.7 0 20.6-16.6 29.4-55.5 29.4-48.9 0-59.6-12.3-63.2-36.6-.4-2.6-2.6-4.5-5.3-4.5h-23.9c-3 0-5.3 2.4-5.3 5.3 0 31.1 16.9 68.2 97.8 68.2 58.4-.1 92-23.2 92-63.4z"/></svg>
                     </div>
@@ -151,7 +197,7 @@
                     </div>
                 </div>
 
-                <div class="shadow-lg border-2 border-green py-7 px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
+                <div class="shadow-lg border-2 border-green py-7 px-5 lg:px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" class="group-hover:fill-white w-[24px] fill-slate-200" viewBox="0 0 576 512"><path d="M333.5 201.4c0-22.1-15.6-34.3-43-34.3h-50.4v71.2h42.5C315.4 238.2 333.5 225 333.5 201.4zM517 188.6c-9.5-30.9-10.9-68.8-9.8-98.1c1.1-30.5-22.7-58.5-54.7-58.5H123.7c-32.1 0-55.8 28.1-54.7 58.5c1 29.3-.3 67.2-9.8 98.1c-9.6 31-25.7 50.6-52.2 53.1v28.5c26.4 2.5 42.6 22.1 52.2 53.1c9.5 30.9 10.9 68.8 9.8 98.1c-1.1 30.5 22.7 58.5 54.7 58.5h328.7c32.1 0 55.8-28.1 54.7-58.5c-1-29.3 .3-67.2 9.8-98.1c9.6-31 25.7-50.6 52.1-53.1v-28.5C542.7 239.2 526.5 219.6 517 188.6zM300.2 375.1h-97.9V136.8h97.4c43.3 0 71.7 23.4 71.7 59.4c0 25.3-19.1 47.9-43.5 51.8v1.3c33.2 3.6 55.5 26.6 55.5 58.3C383.4 349.7 352.1 375.1 300.2 375.1zM290.2 266.4h-50.1v78.4h52.3c34.2 0 52.3-13.7 52.3-39.5C344.7 279.6 326.1 266.4 290.2 266.4z"/></svg>                    </div>
                     <div class="text-slate-200 font-bold text-[18px] group-hover:text-white">
@@ -159,7 +205,7 @@
                     </div>
                 </div>
 
-                <div class="shadow-lg border-2 border-green py-7 px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
+                <div class="shadow-lg border-2 border-green py-7 px-5 lg:px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
                     <div>
                         <svg class="group-hover:fill-white w-[24px] fill-slate-200" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.036c-2.667 0-4.333 1.325-5 3.976 1-1.325 2.167-1.822 3.5-1.491.761.189 1.305.738 1.906 1.345C13.387 10.855 14.522 12 17 12c2.667 0 4.333-1.325 5-3.976-1 1.325-2.166 1.822-3.5 1.491-.761-.189-1.305-.738-1.907-1.345-.98-.99-2.114-2.134-4.593-2.134zM7 12c-2.667 0-4.333 1.325-5 3.976 1-1.326 2.167-1.822 3.5-1.491.761.189 1.305.738 1.907 1.345.98.989 2.115 2.134 4.594 2.134 2.667 0 4.333-1.325 5-3.976-1 1.325-2.167 1.822-3.5 1.491-.761-.189-1.305-.738-1.906-1.345C10.613 13.145 9.478 12 7 12z"></path></g></svg>
                     </div>
@@ -168,7 +214,7 @@
                     </div>
                 </div>
 
-                <div class="shadow-lg border-2 border-green py-7 px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
+                <div class="shadow-lg border-2 border-green py-7 px-5 lg:px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
                     <div>
                         <svg class="group-hover:fill-white w-[24px] fill-slate-200" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>bulma</title> <path d="M15.062 1.004l-7.498 7.498-1.874 13.122 9.372 9.372 11.248-7.498-7.498-7.498 5.624-5.624-9.374-9.372z"></path> </g></svg>
                     </div>
@@ -177,7 +223,7 @@
                     </div>
                 </div>
 
-                <div class="shadow-lg border-2 border-green py-7 px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
+                <div class="shadow-lg border-2 border-green py-7 px-5 lg:px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
                     <div>
                         <svg class="group-hover:fill-white w-[24px] fill-slate-200" viewBox="-70 0 396 396" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M127.994592,394.550526 L127.994592,295.502884 C127.994592,295.294931 128.108966,295.086979 128.30652,294.983003 L255.698051,221.492688 C255.888859,221.390435 256.005573,221.189205 256,220.972808 L256,192.816077 C256.007684,192.602014 255.897593,192.40079 255.712953,192.292178 C255.528313,192.183566 255.298947,192.18511 255.115785,192.296196 L128.888787,265.121064 C128.705625,265.232151 128.476259,265.233694 128.291619,265.125082 C128.106978,265.01647 127.996887,264.815246 128.00499,264.601183 L128.00499,236.423658 C128.00499,236.215705 128.108966,236.018151 128.296123,235.914175 L255.698051,162.42386 C255.882378,162.31504 255.996655,162.118011 256,161.903979 L256,133.747248 C255.994814,133.538507 255.88241,133.347083 255.702442,133.241219 C255.522473,133.135355 255.300549,133.130115 255.115785,133.227368 L128.888787,206.041838 C128.706749,206.157473 128.475708,206.163022 128.288329,206.05626 C128.10095,205.949497 127.987927,205.747911 127.994592,205.532355 L127.994592,177.365227 C127.994592,177.157275 128.108966,176.95972 128.30652,176.855744 L255.698051,103.396622 C255.887139,103.292599 256.003183,103.092524 256,102.876741 L256,74.3456965 C255.987316,73.9302634 255.769,73.5482104 255.417315,73.3267306 L128.587256,0.158741661 C128.224315,-0.0533079582 127.775266,-0.0533079582 127.412326,0.158741661 L103.289868,14.0811429 C103.104524,14.1836909 102.98949,14.3788035 102.98949,14.5906258 C102.98949,14.8024481 103.104524,14.9975607 103.289868,15.1001087 L229.516866,87.9145789 C229.691453,88.0251463 229.797267,88.2174087 229.797267,88.4240619 C229.797267,88.630715 229.691453,88.8229774 229.516866,88.9335448 L205.394409,102.845548 C205.024522,103.045206 204.578967,103.045206 204.209081,102.845548 L77.389419,29.6983547 C77.0033752,29.4754721 76.5277496,29.4754721 76.1417057,29.6983547 L52.0920314,43.5999606 C51.9066868,43.7025087 51.7916536,43.8976212 51.7916536,44.1094436 C51.7916536,44.3212659 51.9066868,44.5163785 52.0920314,44.6189265 L178.298234,117.443794 C178.488933,117.544679 178.60822,117.742736 178.60822,117.958476 C178.60822,118.174216 178.488933,118.372273 178.298234,118.473158 L154.175777,132.385161 C153.789733,132.608044 153.314107,132.608044 152.928063,132.385161 L26.1915822,59.2171724 C25.8055384,58.9942899 25.3299128,58.9942899 24.9438689,59.2171724 L1.42108547e-14,73.6490566 L1.42108547e-14,321.392935 C1.42108547e-14,321.600887 0.10397611,321.808839 0.30153072,321.902418 L24.7151215,335.991181 C24.8982833,336.102267 25.1276495,336.103811 25.3122895,335.995199 C25.4969296,335.886587 25.6070208,335.685363 25.5989184,335.4713 L25.5989184,89.4534254 C25.5947476,89.2412117 25.706384,89.0435405 25.890272,88.9375346 C26.0741599,88.8315286 26.3011633,88.8339838 26.4827153,88.9439424 L50.9171013,103.032705 C51.0834631,103.136681 51.1978368,103.334236 51.1978368,103.552586 L51.1978368,350.92215 C51.1978368,351.130103 51.3018129,351.338055 51.4889699,351.442031 L75.9025607,365.541192 C76.0887797,365.648707 76.3181593,365.648936 76.5045919,365.54179 C76.6910245,365.434645 76.806303,365.236338 76.8071528,365.021311 L76.8071528,118.972243 C76.7990504,118.75818 76.9091416,118.556956 77.0937817,118.448345 C77.2784218,118.339733 77.5077879,118.341276 77.6909498,118.452363 L102.104541,132.530728 C102.291698,132.634704 102.406071,132.842656 102.406071,133.050608 L102.406071,380.461763 C102.406071,380.669716 102.510047,380.86727 102.686807,380.981644 L127.173181,395.049612 C127.350928,395.134021 127.559284,395.122947 127.727082,395.02017 C127.89488,394.917394 127.999418,394.736822 128.00499,394.540129 L127.994592,394.550526 L127.994592,394.550526 Z"> </path> </g> </g></svg>
                     </div>
@@ -186,7 +232,7 @@
                     </div>
                 </div>
 
-                <div class="shadow-lg border-2 border-green py-7 px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
+                <div class="shadow-lg border-2 border-green py-7 px-5 lg:px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
                     <div>
                         <svg class="group-hover:fill-white w-[24px] fill-slate-200" viewBox="0 0 15 15"  xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M2.71693 1H0.5C0.320967 1 0.155598 1.09572 0.0664289 1.25097C-0.0227402 1.40622 -0.0220988 1.59729 0.0681106 1.75194L7.06811 13.7519C7.15772 13.9055 7.32217 14 7.5 14C7.67783 14 7.84228 13.9055 7.93189 13.7519L14.9319 1.75194C15.0221 1.59729 15.0227 1.40622 14.9336 1.25097C14.8444 1.09572 14.679 1 14.5 1H12.2831L7.50004 8.97184L2.71693 1Z" ></path> <path d="M11.1169 1H8.191L7.50002 2.38197L6.80903 1H3.88312L7.50004 7.02819L11.1169 1Z"></path> </g></svg>
                     </div>
@@ -195,7 +241,7 @@
                     </div>
                 </div>
 
-                <div class="shadow-lg border-2 border-green py-7 px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
+                <div class="shadow-lg border-2 border-green py-7 px-5 lg:px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
                     <div>
                         <svg class="group-hover:fill-white w-[24px] h-[24px] fill-slate-200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64px" height="64px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="5151e0c8492e5103c096af88a51ef0ed"> <path display="inline" d="M499.161,364.63c0,0-63.554,171.386-282.354,131.488c-3.443-0.641-6.745-1.838-10.089-2.849 c-0.782-0.229-1.572-0.479-2.354-0.703c-3.285-1.022-6.537-2.07-9.769-3.197c-0.37-0.129-0.723-0.25-1.098-0.383 c-2.944-1.035-5.872-2.134-8.762-3.244c-0.757-0.295-1.51-0.582-2.263-0.89c-3.114-1.23-6.212-2.516-9.277-3.859 c-0.565-0.249-1.11-0.499-1.684-0.752c-2.683-1.193-5.332-2.429-7.959-3.685c-0.682-0.346-1.368-0.666-2.055-0.99 c-0.374-0.187-0.777-0.374-1.16-0.565c-1.696-0.848-3.352-1.729-5.023-2.604c-1.289-0.665-2.599-1.313-3.88-2 c-2.366-1.289-4.699-2.599-7.02-3.938c-0.861-0.491-1.73-0.965-2.583-1.46c-3.152-1.854-6.271-3.78-9.344-5.727 c-0.869-0.557-1.729-1.147-2.586-1.722c-2.004-1.297-4.009-2.595-5.972-3.95c-0.208-0.142-0.407-0.291-0.611-0.437 c-0.761-0.516-1.484-1.044-2.241-1.593c-2.071-1.439-4.121-2.911-6.15-4.408c-0.981-0.74-1.959-1.484-2.932-2.229 c-1.838-1.402-3.667-2.837-5.481-4.284c-0.902-0.723-1.817-1.438-2.719-2.17c-2.212-1.822-4.417-3.677-6.575-5.548 c-0.408-0.357-0.84-0.707-1.256-1.081c-0.042-0.017-0.071-0.05-0.117-0.088c-2.449-2.146-4.853-4.346-7.236-6.591 c-0.719-0.657-1.435-1.36-2.158-2.05c-1.78-1.71-3.543-3.432-5.277-5.178c-0.72-0.707-1.431-1.422-2.121-2.138 c-2.241-2.304-4.454-4.611-6.616-6.97c-0.079-0.107-0.158-0.17-0.253-0.274c-0.038-0.041-0.092-0.096-0.129-0.142 c-2.212-2.437-4.383-4.928-6.508-7.427c-0.595-0.703-1.193-1.422-1.78-2.133c-1.584-1.909-3.144-3.813-4.674-5.743 c-0.636-0.803-1.272-1.613-1.9-2.42c-1.717-2.217-3.414-4.45-5.057-6.721c-0.308-0.424-0.636-0.84-0.932-1.256 c-0.063-0.07-0.116-0.146-0.158-0.216c-1.904-2.633-3.742-5.315-5.547-8.001c-0.561-0.824-1.089-1.672-1.63-2.521 c-1.306-1.987-2.587-3.976-3.826-5.988c-0.648-1.031-1.264-2.066-1.888-3.103c-1.127-1.879-2.229-3.759-3.298-5.655 c-0.611-1.073-1.214-2.121-1.805-3.223c-0.329-0.582-0.686-1.182-1.006-1.792c-0.562-1.016-1.069-2.075-1.618-3.111 c-0.848-1.626-1.709-3.26-2.528-4.915c-34.557-69.094-40.196-153.694,5.048-218.723l35.314-44.789 c-39.843,77.007-21.936,170.778,27.908,238.76c1.8,2.475,3.643,4.916,5.526,7.356c0.583,0.736,1.168,1.477,1.751,2.184 c1.567,1.996,3.168,3.967,4.786,5.918c0.583,0.686,1.152,1.359,1.747,2.066c2.163,2.554,4.375,5.09,6.646,7.564 c0.108,0.12,0.212,0.229,0.316,0.345c2.146,2.342,4.333,4.653,6.558,6.933c0.69,0.698,1.393,1.389,2.096,2.088 c1.747,1.783,3.531,3.514,5.344,5.235c0.686,0.682,1.376,1.339,2.088,2.017c2.449,2.279,4.919,4.545,7.435,6.758 c0.262,0.229,0.532,0.44,0.773,0.652c2.329,2.025,4.687,3.997,7.074,5.96c0.832,0.678,1.68,1.355,2.528,2.029 c1.875,1.509,3.772,2.978,5.681,4.437c0.911,0.699,1.846,1.41,2.791,2.108c2.075,1.539,4.171,3.053,6.288,4.55 c0.719,0.486,1.418,1.015,2.146,1.505c2.188,1.514,4.417,2.986,6.654,4.425c0.84,0.558,1.672,1.14,2.52,1.681 c3.086,1.954,6.205,3.875,9.357,5.73c0.811,0.466,1.622,0.902,2.42,1.352c2.379,1.376,4.762,2.731,7.19,4.029 c1.314,0.731,2.666,1.393,3.996,2.096c1.988,1.023,3.976,2.063,5.988,3.044c0.761,0.374,1.501,0.724,2.246,1.077 c2.566,1.235,5.14,2.425,7.743,3.605c0.616,0.267,1.214,0.545,1.834,0.811c3.032,1.327,6.096,2.6,9.186,3.817 c0.794,0.316,1.589,0.62,2.387,0.937c2.811,1.089,5.643,2.146,8.508,3.156c0.445,0.158,0.89,0.32,1.322,0.478 c3.194,1.099,6.408,2.146,9.648,3.136c0.827,0.258,1.655,0.508,2.503,0.757c3.318,0.981,6.616,2.042,10.018,2.812 C351.039,452.521,445.783,434.173,499.161,364.63z M182.44,254.758c4.907,7.024,10.338,15.386,16.846,21.031 c2.354,2.598,4.824,5.13,7.34,7.621c0.632,0.648,1.285,1.272,1.938,1.908c2.437,2.371,4.932,4.704,7.494,6.97 c0.108,0.079,0.204,0.188,0.308,0.263c0.029,0.033,0.054,0.041,0.075,0.074c2.845,2.487,5.781,4.887,8.758,7.244 c0.662,0.508,1.318,1.036,1.988,1.552c2.99,2.291,6.039,4.545,9.166,6.69c0.096,0.066,0.17,0.134,0.266,0.2 c1.376,0.956,2.782,1.846,4.175,2.761c0.674,0.433,1.31,0.898,1.983,1.306c2.237,1.435,4.496,2.828,6.795,4.167 c0.325,0.2,0.641,0.366,0.961,0.553c1.975,1.14,3.992,2.267,6.005,3.356c0.698,0.391,1.414,0.74,2.129,1.114 c1.389,0.724,2.786,1.468,4.2,2.171c0.212,0.1,0.433,0.199,0.637,0.287c2.882,1.418,5.788,2.79,8.762,4.079 c0.632,0.283,1.289,0.532,1.934,0.799c2.375,1.006,4.77,1.992,7.178,2.915c1.022,0.387,2.059,0.757,3.073,1.127 c2.191,0.815,4.383,1.556,6.595,2.296c1.003,0.319,1.984,0.648,2.986,0.956c3.144,0.973,6.254,2.212,9.535,2.753 C472.501,366.942,511.5,236.873,511.5,236.873c-35.16,50.633-103.243,74.791-175.897,55.936c-3.223-0.849-6.403-1.776-9.56-2.77 c-0.974-0.292-1.922-0.607-2.883-0.928c-2.245-0.728-4.479-1.501-6.694-2.308c-1.011-0.37-2.025-0.74-3.02-1.123 c-2.425-0.932-4.824-1.896-7.198-2.902c-0.653-0.283-1.306-0.533-1.942-0.824c-2.981-1.299-5.917-2.663-8.812-4.094 c-1.493-0.729-2.953-1.499-4.425-2.254c-0.849-0.437-1.701-0.875-2.549-1.312c-1.88-1.021-3.751-2.08-5.594-3.154 c-0.437-0.252-0.894-0.491-1.339-0.755c-2.283-1.339-4.537-2.718-6.77-4.134c-0.687-0.438-1.352-0.915-2.038-1.366 c-1.477-0.954-2.944-1.921-4.392-2.902c-3.11-2.146-6.138-4.399-9.128-6.678c-0.69-0.543-1.376-1.073-2.059-1.616 c-31.796-25.111-57-59.423-68.994-98.33c-12.555-40.352-9.847-85.647,11.914-122.406l-26.735,37.738 c-32.715,47.085-30.939,110.113-5.419,159.91C172.252,238.95,177.063,247.046,182.44,254.758z M360.5,196.506 c1.393,0.52,2.782,0.981,4.191,1.458c0.616,0.189,1.231,0.401,1.851,0.584c1.988,0.626,3.963,1.352,6.018,1.738 c93.284,18.023,118.58-47.869,125.317-57.566c-22.165,31.91-59.405,39.57-105.111,28.481c-3.605-0.881-7.572-2.185-11.058-3.416 c-4.462-1.591-8.849-3.404-13.124-5.456c-8.121-3.899-15.848-8.629-23.025-14.045c-40.891-31.029-66.291-90.221-39.61-138.425 L291.51,29.76c-19.287,28.386-21.179,63.638-7.801,94.991C297.823,158.025,326.745,184.132,360.5,196.506z"> </path> </g> </g></svg>
                     </div>
@@ -204,7 +250,7 @@
                     </div>
                 </div>
 
-                <div class="shadow-lg border-2 border-green py-7 px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
+                <div class="shadow-lg border-2 border-green py-7 px-5 lg:px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
                     <div>
                         <svg class="group-hover:fill-white w-[24px] h-[24px] fill-slate-200" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" ><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>python [#127]</title> <desc>Created with Sketch.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" > <g id="Dribbble-Light-Preview" transform="translate(-340.000000, -7599.000000)"> <g id="icons" transform="translate(56.000000, 160.000000)"> <path d="M296.744,7457.45798 C296.262,7457.45798 295.872,7457.06594 295.872,7456.58142 C295.872,7456.0969 296.262,7455.70587 296.744,7455.70587 C297.226,7455.70587 297.616,7456.0969 297.616,7456.58142 C297.616,7457.06594 297.226,7457.45798 296.744,7457.45798 M294.072,7459 C299.15,7459 298.833,7456.78649 298.833,7456.78649 L298.827,7454.49357 L293.982,7454.49357 L293.982,7453.80499 L300.751,7453.80499 C300.751,7453.80499 304,7454.17591 304,7449.02614 C304,7443.87636 301.165,7444.0583 301.165,7444.0583 L299.472,7444.0583 L299.472,7446.44873 C299.472,7446.44873 299.563,7449.29855 296.682,7449.29855 L291.876,7449.29855 C291.876,7449.29855 289.176,7449.25533 289.176,7451.9222 L289.176,7456.33112 C289.176,7456.33112 288.766,7459 294.072,7459 M291.257,7440.54202 C291.739,7440.54202 292.128,7440.93406 292.128,7441.41858 C292.128,7441.9031 291.739,7442.29413 291.257,7442.29413 C290.775,7442.29413 290.385,7441.9031 290.385,7441.41858 C290.385,7440.93406 290.775,7440.54202 291.257,7440.54202 M293.928,7439 C288.851,7439 289.168,7441.21351 289.168,7441.21351 L289.174,7443.50643 L294.019,7443.50643 L294.019,7444.19501 L287.249,7444.19501 C287.249,7444.19501 284,7443.82409 284,7448.97386 C284,7454.12364 286.836,7453.9417 286.836,7453.9417 L288.528,7453.9417 L288.528,7451.55127 C288.528,7451.55127 288.437,7448.70145 291.319,7448.70145 L296.124,7448.70145 C296.124,7448.70145 298.824,7448.74467 298.824,7446.0778 L298.824,7441.66888 C298.824,7441.66888 299.234,7439 293.928,7439" id="python-[#127]"> </path> </g> </g> </g> </g></svg>
                     </div>
@@ -214,7 +260,7 @@
                 </div>
 
 
-                <div class="shadow-lg border-2 border-green py-7 px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
+                <div class="shadow-lg border-2 border-green py-7 px-5 lg:px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
                     <div>
                         <svg class="group-hover:fill-white w-[24px] h-[24px] fill-slate-200" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="m24.129 23.412-.508-.484c-.251-.331-.518-.624-.809-.891l-.005-.004q-.448-.407-.931-.774-.387-.266-1.064-.641c-.371-.167-.661-.46-.818-.824l-.004-.01-.048-.024c.212-.021.406-.06.592-.115l-.023.006.57-.157c.236-.074.509-.122.792-.133h.006c.298-.012.579-.06.847-.139l-.025.006q.194-.048.399-.109t.351-.109v-.169q-.145-.217-.351-.496c-.131-.178-.278-.333-.443-.468l-.005-.004q-.629-.556-1.303-1.076c-.396-.309-.845-.624-1.311-.916l-.068-.04c-.246-.162-.528-.312-.825-.435l-.034-.012q-.448-.182-.883-.399c-.097-.048-.21-.09-.327-.119l-.011-.002c-.117-.024-.217-.084-.29-.169l-.001-.001c-.138-.182-.259-.389-.355-.609l-.008-.02q-.145-.339-.314-.651-.363-.702-.702-1.427t-.651-1.452q-.217-.484-.399-.967c-.134-.354-.285-.657-.461-.942l.013.023c-.432-.736-.863-1.364-1.331-1.961l.028.038c-.463-.584-.943-1.106-1.459-1.59l-.008-.007c-.509-.478-1.057-.934-1.632-1.356l-.049-.035q-.896-.651-1.96-1.282c-.285-.168-.616-.305-.965-.393l-.026-.006-1.113-.278-.629-.048q-.314-.024-.629-.024c-.148-.078-.275-.171-.387-.279-.11-.105-.229-.204-.353-.295l-.01-.007c-.605-.353-1.308-.676-2.043-.93l-.085-.026c-.193-.113-.425-.179-.672-.179-.176 0-.345.034-.499.095l.009-.003c-.38.151-.67.458-.795.84l-.003.01c-.073.172-.115.371-.115.581 0 .368.13.705.347.968l-.002-.003q.544.725.834 1.14.217.291.448.605c.141.188.266.403.367.63l.008.021c.056.119.105.261.141.407l.003.016q.048.206.121.448.217.556.411 1.14c.141.425.297.785.478 1.128l-.019-.04q.145.266.291.52t.314.496c.065.098.147.179.241.242l.003.002c.099.072.164.185.169.313v.001c-.114.168-.191.369-.217.586l-.001.006c-.035.253-.085.478-.153.695l.008-.03c-.223.666-.351 1.434-.351 2.231 0 .258.013.512.04.763l-.003-.031c.06.958.349 1.838.812 2.6l-.014-.025c.197.295.408.552.641.787.168.188.412.306.684.306.152 0 .296-.037.422-.103l-.005.002c.35-.126.599-.446.617-.827v-.002c.048-.474.12-.898.219-1.312l-.013.067c.024-.063.038-.135.038-.211 0-.015-.001-.03-.002-.045v.002q-.012-.109.133-.206v.048q.145.339.302.677t.326.677c.295.449.608.841.952 1.202l-.003-.003c.345.372.721.706 1.127 1.001l.022.015c.212.162.398.337.566.528l.004.004c.158.186.347.339.56.454l.01.005v-.024h.048c-.039-.087-.102-.157-.18-.205l-.002-.001c-.079-.044-.147-.088-.211-.136l.005.003q-.217-.217-.448-.484t-.423-.508q-.508-.702-.969-1.467t-.871-1.555q-.194-.387-.375-.798t-.351-.798c-.049-.099-.083-.213-.096-.334v-.005c-.006-.115-.072-.214-.168-.265l-.002-.001c-.121.206-.255.384-.408.545l.001-.001c-.159.167-.289.364-.382.58l-.005.013c-.141.342-.244.739-.289 1.154l-.002.019q-.072.641-.145 1.318l-.048.024-.024.024c-.26-.053-.474-.219-.59-.443l-.002-.005q-.182-.351-.326-.69c-.248-.637-.402-1.374-.423-2.144v-.009c-.009-.122-.013-.265-.013-.408 0-.666.105-1.308.299-1.91l-.012.044q.072-.266.314-.896t.097-.871c-.05-.165-.143-.304-.265-.41l-.001-.001c-.122-.106-.233-.217-.335-.335l-.003-.004q-.169-.244-.326-.52t-.278-.544c-.165-.382-.334-.861-.474-1.353l-.022-.089c-.159-.565-.336-1.043-.546-1.503l.026.064c-.111-.252-.24-.47-.39-.669l.006.008q-.244-.326-.436-.617-.244-.314-.484-.605c-.163-.197-.308-.419-.426-.657l-.009-.02c-.048-.097-.09-.21-.119-.327l-.002-.011c-.011-.035-.017-.076-.017-.117 0-.082.024-.159.066-.223l-.001.002c.011-.056.037-.105.073-.145.039-.035.089-.061.143-.072h.002c.085-.055.188-.088.3-.088.084 0 .165.019.236.053l-.003-.001c.219.062.396.124.569.195l-.036-.013q.459.194.847.375c.298.142.552.292.792.459l-.018-.012q.194.121.387.266t.411.291h.339q.387 0 .822.037c.293.023.564.078.822.164l-.024-.007c.481.143.894.312 1.286.515l-.041-.019q.593.302 1.125.641c.589.367 1.098.743 1.577 1.154l-.017-.014c.5.428.954.867 1.38 1.331l.01.012c.416.454.813.947 1.176 1.464l.031.047c.334.472.671 1.018.974 1.584l.042.085c.081.154.163.343.234.536l.011.033q.097.278.217.57.266.605.57 1.221t.57 1.198l.532 1.161c.187.406.396.756.639 1.079l-.011-.015c.203.217.474.369.778.422l.008.001c.368.092.678.196.978.319l-.047-.017c.143.065.327.134.516.195l.04.011c.212.065.396.151.565.259l-.009-.005c.327.183.604.363.868.559l-.021-.015q.411.302.822.57.194.145.651.423t.484.52c-.114-.004-.249-.007-.384-.007-.492 0-.976.032-1.45.094l.056-.006c-.536.072-1.022.203-1.479.39l.04-.014c-.113.049-.248.094-.388.129l-.019.004c-.142.021-.252.135-.266.277v.001c.061.076.11.164.143.26l.002.006c.034.102.075.19.125.272l-.003-.006c.119.211.247.393.391.561l-.004-.005c.141.174.3.325.476.454l.007.005q.244.194.508.399c.161.126.343.25.532.362l.024.013c.284.174.614.34.958.479l.046.016c.374.15.695.324.993.531l-.016-.011q.291.169.58.375t.556.399c.073.072.137.152.191.239l.003.005c.091.104.217.175.36.193h.003v-.048c-.088-.067-.153-.16-.184-.267l-.001-.004c-.025-.102-.062-.191-.112-.273l.002.004zm-18.576-19.205q-.194 0-.363.012c-.115.008-.222.029-.323.063l.009-.003v.024h.048q.097.145.244.326t.266.351l.387.798.048-.024c.113-.082.2-.192.252-.321l.002-.005c.052-.139.082-.301.082-.469 0-.018 0-.036-.001-.054v.003c-.045-.044-.082-.096-.108-.154l-.001-.003-.081-.182c-.053-.084-.127-.15-.214-.192l-.003-.001c-.094-.045-.174-.102-.244-.169z"></path></g></svg>
                     </div>
@@ -223,7 +269,7 @@
                     </div>
                 </div>
 
-                <div class="shadow-lg border-2 border-green py-7 px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
+                <div class="shadow-lg border-2 border-green py-7 px-5 lg:px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
                     <div>
                        <svg class="group-hover:fill-white w-[24px] h-[24px] fill-slate-200" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>postgresql</title> <path d="M24.295 9.929c-0.010 0.155-0.082 0.292-0.191 0.387l-0.001 0.001c-0.131 0.143-0.306 0.243-0.504 0.278l-0.005 0.001c-0.028 0.004-0.061 0.007-0.094 0.007h-0c-0.001 0-0.003 0-0.004 0-0.312 0-0.58-0.189-0.694-0.46l-0.002-0.005c-0.030-0.221 0.33-0.388 0.701-0.44s0.764 0.011 0.794 0.231zM14.385 10.443c-0.121 0.311-0.418 0.528-0.766 0.528-0.004 0-0.007-0-0.011-0h0.001c-0 0-0 0-0 0-0.036 0-0.070-0.003-0.105-0.007l0.004 0c-0.261-0.047-0.483-0.191-0.63-0.392l-0.002-0.003c-0.082-0.094-0.132-0.219-0.132-0.354 0-0 0-0.001 0-0.001v0c0.012-0.077 0.055-0.143 0.115-0.185l0.001-0.001c0.152-0.084 0.334-0.133 0.528-0.133 0.083 0 0.164 0.009 0.242 0.026l-0.007-0.001c0.395 0.055 0.803 0.242 0.764 0.523zM25.403 18.086l-0.107-0.134-0.044-0.055c0.457-0.846 0.725-1.853 0.725-2.921 0-0.488-0.056-0.962-0.162-1.418l0.008 0.042c-0.070-0.453-0.111-0.976-0.111-1.508 0-0.007 0-0.014 0-0.021v0.001c0.023-0.501 0.076-0.97 0.158-1.429l-0.010 0.066c0.089-0.464 0.14-0.998 0.14-1.544 0-0.051-0-0.101-0.001-0.151l0 0.008c0.012-0.049 0.019-0.104 0.019-0.162 0-0.027-0.002-0.053-0.004-0.079l0 0.003c-0.4-1.58-1.151-2.949-2.168-4.073l0.007 0.008c-0.911-1.068-2.031-1.929-3.3-2.523l-0.060-0.025c0.696-0.149 1.496-0.234 2.316-0.234 0.075 0 0.15 0.001 0.225 0.002l-0.011-0c0.045-0.001 0.097-0.002 0.15-0.002 2.378 0 4.496 1.109 5.866 2.838l0.012 0.016c0.028 0.036 0.056 0.077 0.080 0.12l0.003 0.005c0.904 1.694-0.345 7.842-3.732 13.172zM25.117 9.322c-0.016 0.455-0.064 0.886-0.14 1.307l0.008-0.055c-0.078 0.425-0.134 0.931-0.157 1.445l-0.001 0.025c-0 0.017-0 0.036-0 0.056 0 0.567 0.042 1.124 0.124 1.668l-0.008-0.061c0.085 0.377 0.134 0.809 0.134 1.254 0 0.763-0.144 1.493-0.407 2.162l0.014-0.040c-0.076-0.131-0.155-0.289-0.224-0.453l-0.011-0.029c-0.066-0.159-0.209-0.416-0.406-0.77-0.769-1.38-2.571-4.611-1.649-5.929 0.474-0.678 1.676-0.707 2.722-0.579zM24.406 20.907c-0.051-1.039 0.336-1.148 0.746-1.263q0.085-0.023 0.169-0.051c0.050 0.044 0.105 0.087 0.162 0.125l0.005 0.003c0.62 0.273 1.342 0.431 2.102 0.431 0.592 0 1.161-0.096 1.693-0.274l-0.038 0.011c-0.344 0.293-0.736 0.544-1.16 0.738l-0.031 0.013c-0.644 0.264-1.391 0.429-2.173 0.454l-0.010 0c-0.119 0.018-0.256 0.029-0.395 0.029-0.386 0-0.754-0.080-1.087-0.224l0.018 0.007zM23.293 22.933c-0.021 0.221-0.045 0.47-0.077 0.745l-0.182 0.548c-0.014 0.040-0.022 0.086-0.023 0.134v0c0.001 0.027 0.001 0.058 0.001 0.089 0 0.355-0.053 0.699-0.151 1.022l0.006-0.025c-0.116 0.389-0.196 0.84-0.223 1.305l-0.001 0.016c-0.052 1.684-1.355 3.047-3.008 3.194l-0.013 0.001c-1.894 0.406-2.23-0.621-2.526-1.527q-0.045-0.142-0.096-0.283c-0.16-0.652-0.252-1.401-0.252-2.171 0-0.36 0.020-0.715 0.059-1.065l-0.004 0.043c0.006-0.128 0.009-0.279 0.009-0.43 0-1.026-0.154-2.016-0.441-2.948l0.019 0.071q0.008-0.55 0.024-1.114c0-0.003 0-0.008 0-0.012 0-0.046-0.007-0.090-0.020-0.132l0.001 0.003c-0.014-0.1-0.033-0.188-0.058-0.273l0.003 0.013c-0.141-0.521-0.496-0.941-0.964-1.164l-0.011-0.005c-0.176-0.088-0.384-0.14-0.605-0.14-0.104 0-0.205 0.011-0.302 0.033l0.009-0.002c0.128-0.47 0.26-0.854 0.412-1.228l-0.026 0.073 0.066-0.177c0.074-0.2 0.167-0.407 0.266-0.626 0.546-1.124 0.865-2.445 0.865-3.841 0-0.938-0.144-1.842-0.411-2.692l0.017 0.063c-0.183-1.108-1.135-1.943-2.281-1.943-0.18 0-0.356 0.021-0.524 0.060l0.016-0.003c-0.796 0.104-1.516 0.338-2.171 0.682l0.035-0.017q-0.124 0.063-0.245 0.13c0.091-2.147 0.896-4.090 2.181-5.615l-0.012 0.014c0.118-0.119 0.242-0.232 0.37-0.338l0.009-0.007c0.069-0.014 0.13-0.042 0.182-0.081l-0.001 0.001c0.893-0.654 2.014-1.047 3.227-1.047 0.097 0 0.193 0.002 0.288 0.007l-0.013-0.001c0.526 0.008 1.034 0.044 1.534 0.108l-0.067-0.007c2.043 0.393 3.787 1.463 5.032 2.963l0.011 0.014c0.748 0.869 1.354 1.887 1.766 2.998l0.022 0.069c-0.257-0.069-0.552-0.109-0.856-0.109-0.983 0-1.868 0.416-2.49 1.081l-0.002 0.002c-1.24 1.773 0.679 5.215 1.601 6.869 0.169 0.303 0.315 0.565 0.361 0.676 0.26 0.601 0.587 1.118 0.98 1.577l-0.007-0.008c0.087 0.109 0.171 0.214 0.236 0.306-0.501 0.144-1.401 0.478-1.319 2.146-0.015 0.195-0.053 0.558-0.104 1.018-0.054 0.269-0.098 0.597-0.123 0.93l-0.002 0.028zM14.091 17.219l-0.066 0.176c-0.137 0.328-0.279 0.745-0.397 1.172l-0.019 0.081c-0.893-0.013-1.695-0.395-2.261-1.001l-0.002-0.002c-0.632-0.667-1.020-1.57-1.020-2.564 0-0.198 0.015-0.392 0.045-0.582l-0.003 0.021c0.097-0.72 0.153-1.551 0.153-2.396 0-0.502-0.020-0.999-0.058-1.491l0.004 0.065c-0.006-0.107-0.012-0.201-0.015-0.275 0.805-0.611 1.824-0.98 2.929-0.98 0.132 0 0.262 0.005 0.391 0.015l-0.017-0.001c0.554 0.129 0.971 0.588 1.037 1.153l0.001 0.006c0.238 0.728 0.375 1.566 0.375 2.435 0 1.266-0.291 2.464-0.809 3.532l0.021-0.048c-0.105 0.233-0.204 0.453-0.289 0.682zM11.474 22.203c-0.205-0.052-0.385-0.128-0.549-0.227l0.009 0.005c0.172-0.073 0.375-0.134 0.585-0.173l0.019-0.003c1.604-0.33 1.851-0.563 2.392-1.25 0.124-0.157 0.264-0.336 0.459-0.553 0.040-0.045 0.072-0.099 0.091-0.159l0.001-0.003c0.213-0.189 0.34-0.137 0.546-0.052 0.227 0.125 0.395 0.336 0.46 0.587l0.001 0.007c0.023 0.065 0.037 0.139 0.037 0.217 0 0.125-0.035 0.242-0.095 0.341l0.002-0.003c-0.645 0.882-1.676 1.449-2.839 1.449-0.4 0-0.785-0.067-1.144-0.191l0.025 0.007zM3.967 15.846c-0.651-1.985-1.181-4.34-1.494-6.764l-0.021-0.199c-0.061-0.322-0.095-0.693-0.095-1.071 0-1.806 0.789-3.427 2.041-4.537l0.006-0.005c2.295-1.623 6.048-0.676 7.633-0.163l-0.012 0.012c-1.535 1.872-2.466 4.292-2.466 6.928 0 0.090 0.001 0.18 0.003 0.27l-0-0.013c-0 0.103 0.008 0.249 0.020 0.449 0.033 0.41 0.052 0.888 0.052 1.371 0 0.802-0.052 1.592-0.154 2.367l0.010-0.091c-0.033 0.206-0.051 0.444-0.051 0.686 0 1.231 0.482 2.35 1.269 3.177l-0.002-0.002q0.151 0.158 0.315 0.297c-0.433 0.464-1.375 1.49-2.377 2.696-0.709 0.853-1.199 0.689-1.36 0.636-0.685-0.368-1.222-0.939-1.538-1.631l-0.009-0.022c-0.684-1.252-1.286-2.708-1.73-4.232l-0.039-0.157zM30.445 19.403c-0.019-0.057-0.043-0.106-0.072-0.151l0.002 0.003c-0.174-0.329-0.596-0.427-1.259-0.29-2.066 0.426-2.866 0.164-3.156-0.024 1.617-2.452 2.918-5.292 3.751-8.326l0.049-0.209c0.339-1.313 0.997-4.403 0.153-5.913-0.059-0.112-0.122-0.208-0.192-0.298l0.003 0.004c-1.563-1.955-3.948-3.196-6.623-3.196-0.076 0-0.152 0.001-0.227 0.003l0.011-0c-0.042-0.001-0.091-0.001-0.141-0.001-1.342 0-2.633 0.22-3.838 0.625l0.085-0.025q-0.321-0.060-0.645-0.102c-0.488-0.093-1.053-0.151-1.631-0.16l-0.008-0c-0.083-0.004-0.18-0.006-0.278-0.006-1.315 0-2.538 0.394-3.557 1.071l0.024-0.015c-1.071-0.401-5.984-2.056-9.025 0.098-1.489 1.27-2.426 3.147-2.426 5.244 0 0.405 0.035 0.802 0.102 1.188l-0.006-0.041c0.335 2.698 0.879 5.126 1.632 7.461l-0.079-0.284c0.493 1.716 1.103 3.201 1.852 4.6l-0.061-0.124c0.433 0.984 1.182 1.764 2.116 2.225l0.026 0.012c0.168 0.049 0.361 0.078 0.561 0.078 0.742 0 1.392-0.391 1.756-0.979l0.005-0.009c1.001-1.204 1.987-2.282 2.43-2.758 0.502 0.279 1.097 0.451 1.731 0.471l0.006 0 0.001 0.005q-0.158 0.188-0.309 0.382c-0.424 0.538-0.512 0.649-1.875 0.93-0.388 0.080-1.418 0.292-1.433 1.014-0 0.004-0 0.008-0 0.013 0 0.147 0.043 0.284 0.117 0.399l-0.002-0.003c0.312 0.395 0.751 0.678 1.254 0.788l0.015 0.003c0.399 0.13 0.859 0.205 1.335 0.205 1.1 0 2.106-0.398 2.884-1.058l-0.006 0.005c-0.024 0.418-0.037 0.908-0.037 1.401 0 1.753 0.171 3.467 0.496 5.125l-0.027-0.167c0.382 1.373 1.616 2.367 3.084 2.38h0.002c0.369-0.003 0.726-0.046 1.070-0.124l-0.033 0.006c1.919-0.171 3.431-1.705 3.567-3.619l0.001-0.012c0.188-1.088 0.502-3.593 0.673-5.125 0.008-0.065 0.034-0.123 0.072-0.171l-0.001 0.001c0.001-0.001 0.087-0.059 0.534 0.038l0.055 0.009 0.317 0.028 0.019 0.001c0.095 0.004 0.207 0.007 0.319 0.007 1.024 0 2.002-0.2 2.895-0.564l-0.051 0.018c0.805-0.373 2.256-1.29 1.993-2.087z"></path> </g></svg>
                     </div>
@@ -232,7 +278,7 @@
                     </div>
                 </div>
 
-                <div class="shadow-lg border-2 border-green py-7 px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
+                <div class="shadow-lg border-2 border-green py-7 px-5 lg:px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
                     <div>
                         <svg class="group-hover:fill-white w-[24px] h-[24px] fill-slate-200" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>mongodb</title> <path d="M15.821 23.185s0-10.361 0.344-10.36c0.266 0 0.612 13.365 0.612 13.365-0.476-0.056-0.956-2.199-0.956-3.005zM22.489 12.945c-0.919-4.016-2.932-7.469-5.708-10.134l-0.007-0.006c-0.338-0.516-0.647-1.108-0.895-1.732l-0.024-0.068c0.001 0.020 0.001 0.044 0.001 0.068 0 0.565-0.253 1.070-0.652 1.409l-0.003 0.002c-3.574 3.034-5.848 7.505-5.923 12.508l-0 0.013c-0.001 0.062-0.001 0.135-0.001 0.208 0 4.957 2.385 9.357 6.070 12.115l0.039 0.028 0.087 0.063q0.241 1.784 0.412 3.576h0.601c0.166-1.491 0.39-2.796 0.683-4.076l-0.046 0.239c0.396-0.275 0.742-0.56 1.065-0.869l-0.003 0.003c2.801-2.597 4.549-6.297 4.549-10.404 0-0.061-0-0.121-0.001-0.182l0 0.009c-0.003-0.981-0.092-1.94-0.261-2.871l0.015 0.099z"></path> </g></svg>
                     </div>
@@ -241,7 +287,7 @@
                     </div>
                 </div>
 
-                <div class="shadow-lg border-2 border-green py-7 px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
+                <div class="shadow-lg border-2 border-green py-7 px-5 lg:px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
                     <div>
                         <svg class="group-hover:fill-white w-[24px] h-[24px] fill-slate-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M329.1 142.9c-62.5-62.5-155.8-62.5-218.3 0s-62.5 163.8 0 226.3s155.8 62.5 218.3 0c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3c-87.5 87.5-221.3 87.5-308.8 0s-87.5-229.3 0-316.8s221.3-87.5 308.8 0c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0z"/></svg>                   
                     </div>
@@ -251,7 +297,7 @@
                 </div>
 
 
-                <div class="shadow-lg border-2 border-green py-7 px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
+                <div class="shadow-lg border-2 border-green py-7 px-5 lg:px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
                     <div>
                         <svg class="group-hover:fill-white w-[24px] h-[24px] fill-slate-200" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M29.86 8c-0.224-0.385-0.532-0.724-0.871-0.921l-11.755-6.787c-0.677-0.391-1.787-0.391-2.464 0l-11.755 6.787c-0.677 0.391-1.235 1.353-1.235 2.135v13.573c0 0.391 0.14 0.828 0.364 1.213 0.219 0.385 0.532 0.724 0.871 0.917l11.749 6.791c0.683 0.391 1.787 0.391 2.464 0l11.755-6.791c0.339-0.193 0.647-0.532 0.871-0.917s0.359-0.823 0.359-1.213v-13.573c0.005-0.391-0.135-0.828-0.353-1.213zM16 25.479c-5.229 0-9.479-4.249-9.479-9.479s4.249-9.479 9.479-9.479c3.385 0.005 6.511 1.812 8.208 4.733l-4.104 2.376c-0.849-1.464-2.411-2.365-4.104-2.371-2.615 0-4.74 2.125-4.74 4.74s2.125 4.74 4.74 4.74c1.693-0.005 3.255-0.907 4.104-2.371l4.104 2.376c-1.697 2.921-4.823 4.728-8.208 4.733zM25.479 16.527h-1.052v1.052h-1.057v-1.052h-1.052v-1.053h1.052v-1.052h1.057v1.052h1.052zM29.427 16.527h-1.052v1.052h-1.052v-1.052h-1.052v-1.053h1.052v-1.052h1.052v1.052h1.052z"></path> </g></svg>
                     </div>
@@ -261,7 +307,7 @@
                 </div>
 
 
-                <div class="shadow-lg border-2 border-green py-7 px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
+                <div class="shadow-lg border-2 border-green py-7 px-5 lg:px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
                     <div>
                         <svg class="group-hover:fill-white w-[24px] h-[24px] fill-slate-200" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M26.297 27.031l0.031-0.063c0.031-0.047 0.052-0.099 0.073-0.156v-0.005c0.099-0.26 0.12-0.536 0.073-0.813v0.010c-0.052-0.292-0.156-0.573-0.313-0.828l0.010 0.010-7.094-12.474-1.083-1.891-8.156 14.365c-0.141 0.25-0.229 0.521-0.276 0.802v0.016c-0.057 0.323-0.021 0.651 0.109 0.953l-0.005-0.010c0.016 0.047 0.042 0.089 0.068 0.135l-0.005-0.005c0.214 0.365 0.667 0.802 1.667 0.802h13.198c0.208 0 1.234-0.042 1.708-0.849zM17.995 14.609l6.479 11.396h-12.953zM31.661 25.188l-9.354-16.479c-0.099-0.177-0.635-1.052-1.578-1.052-0.422 0-1.026 0.182-1.521 1.047l-1.208 2.12 1.073 1.896 1.667-2.953 9.255 16.245h-3.521c0.047 0.271 0.021 0.547-0.073 0.807v-0.010c-0.021 0.057-0.042 0.115-0.073 0.167v-0.005l-0.031 0.063c-0.474 0.807-1.495 0.849-1.693 0.849h5.505c0.203 0 1.219-0.042 1.693-0.849 0.214-0.37 0.359-0.984-0.141-1.844zM9.74 27.078c-0.021-0.042-0.042-0.083-0.063-0.125v-0.005c-0.13-0.302-0.172-0.63-0.115-0.953v0.010h-7.563l11.24-19.776 3.687 6.484 1.073-1.891-3.219-5.667c-0.089-0.161-0.63-1.036-1.568-1.036-0.422 0-1.031 0.182-1.521 1.052l-11.385 20.016c-0.099 0.172-0.568 1.078-0.099 1.885 0.214 0.37 0.667 0.802 1.667 0.802h9.531c-0.99 0-1.453-0.427-1.667-0.802z"></path> </g></svg>
                     </div>
@@ -271,7 +317,7 @@
                 </div>
 
 
-                <div class="shadow-lg border-2 border-green py-7 px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
+                <div class="shadow-lg border-2 border-green py-7 px-5 lg:px-10 items-center group rounded-lg flex justify-between w-full max-w-[300px]">
                     <div>
                         <svg class="group-hover:fill-white w-[24px] h-[24px] fill-slate-200" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title>RabbitMQ icon</title><path d="M22.2,9.739h-7.09c-0.567-0.068-0.999-0.567-0.999-1.155v-7.44C14.112,0.51,13.597,0,12.968,0h-2.481 C9.852,0,9.342,0.515,9.342,1.145v7.518C9.311,9.23,8.843,9.687,8.281,9.739H6.424C5.878,9.672,5.456,9.214,5.42,8.662V1.145 C5.42,0.51,4.905,0,4.276,0H1.794C1.16,0,0.65,0.515,0.65,1.145v9.739v11.971C0.65,23.49,1.165,24,1.794,24h2.481h6.211h2.481 h9.238c0.635,0,1.144-0.515,1.144-1.145V10.884C23.345,10.249,22.835,9.739,22.2,9.739z M18.934,17.949 c0,0.635-0.515,1.145-1.144,1.145h-2.481c-0.635,0-1.144-0.515-1.144-1.145v-2.341c0-0.635,0.515-1.145,1.144-1.145h2.481 c0.635,0,1.144,0.515,1.144,1.145V17.949z"></path></g></svg>
                     </div>
@@ -283,17 +329,136 @@
         </div>
     </section>
 
-    <section class="w-full h-screen bg-gradient-to-b from-navy-100 to-navy-200 flex items-center">
-        <div class="w-max gap-10 mx-auto max-w-[1200px]">
-            <div class="w-full">
+    <section class="w-full h-full bg-gradient-to-b pb-10 pt-10 from-navy-100 to-navy-200 items-center" id="projects">
+        <div class="w-full p-5 lg:p-0 gap-10 mx-auto max-w-[1200px]">
+            <div class="w-max mx-auto mb-10">
                 <div class="text-slate-200 text-5xl text-white font-bold text-left pb-5 border-b-2 border-green w-max  mx-auto  "><span>Projects</span></div>
-                <div class="flex">
-                    1
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 justify-between">
+                <div class="w-full hover:opacity-50 cursor-pointer rounded-lg border-4 border-green" v-on:click="setSlide(1);">
+                    <div class="w-full bg-white p-5 h-[200px] flex items-center">
+                        <img src="/assets/img/git2.jpg" class="w-full h-full object-contain">
+                    </div>
+                    <div class="my-4 px-5 w-full text-green font-bold text-3xl">
+                        <span>AuthMaster Telegram</span>
+                    </div>
+
+                    <div class="px-6 my-4 w-full text-slate-300 text-lg">
+                        <span>Intermediary between HTTPS requests for quick registration via Telegram</span>
+                    </div>
+                </div>
+                <div class="w-full hover:opacity-50 cursor-pointer rounded-lg border-4 border-green" v-on:click="setSlide(2)">
+                    <div class="w-full bg-white p-5 h-[200px] flex items-center">
+                        <img src="/assets/img/git3.png" class="w-full h-full object-contain"">
+                    </div>
+                    <div class="my-4 px-6 w-full text-green font-bold text-3xl">
+                        <span>SliderCraft</span>
+                    </div>
+
+                    <div class="px-6 my-4 w-full text-slate-300 text-lg">
+                        <span>A small tool for quickly creating a slider</span>
+                    </div>
+                </div>
+                <div class="w-full hover:opacity-50 cursor-pointer rounded-lg border-4 border-green" v-on:click="setSlide(3)">
+                    <div class="w-full bg-white p-5 h-[200px] flex items-center">
+                        <img src="/assets/img/git1.png" class="w-full h-full object-contain"">
+                    </div>
+                    <div class="my-4 px-6 w-full text-green font-bold text-3xl">
+                        <span>PHP Simple MVC</span>
+                    </div>
+
+                    <div class="px-6 my-4 w-full text-slate-300 text-lg">
+                        <span>Custom MVC in PHP</span>
+                    </div>
+                </div>
+                <div class="w-full hover:opacity-50 cursor-pointer rounded-lg border-4 border-green" v-on:click="setSlide(4)">
+                    <div class="w-full bg-white p-5 h-[200px] flex items-center">
+                        <img src="/assets/img/git4.webp" class="w-full h-full object-contain"">
+                    </div>
+                    <div class="my-4 px-6 w-full text-green font-bold text-3xl">
+                        <span>Bizonsnab.ru</span>
+                    </div>
+
+                    <div class="px-6 my-4 w-full text-slate-300 text-lg">
+                        <span>Two-page website for ordering containers</span>
+                    </div>
+                </div>
+                <div class="w-full hover:opacity-50 cursor-pointer rounded-lg border-4 border-green" v-on:click="setSlide(5)">
+                    <div class="w-full bg-white p-5 h-[200px] flex items-center">
+                        <img src="/assets/img/git5.webp" class="w-full h-full object-contain"">
+                    </div>
+                    <div class="my-4 px-6 w-full text-green font-bold text-3xl">
+                        <span>HighSkill.gg</span>
+                    </div>
+
+                    <div class="px-6 my-4 w-full text-slate-300 text-lg">
+                        <span>A website for training eSports players</span>
+                    </div>
+                </div>
+
+                <div class="w-full hover:opacity-50 cursor-pointer rounded-lg border-4 border-green" v-on:click="setSlide(6)">
+                    <div class="w-full bg-white p-5 h-[200px] flex items-center">
+                        <img src="/assets/img/git6.webp" class="w-full h-full object-contain"">
+                    </div>
+                    <div class="my-4 px-6 w-full text-green font-bold text-3xl">
+                        <span>Fifasell.ru</span>
+                    </div>
+
+                    <div class="px-6 my-4 w-full text-slate-300 text-lg">
+                        <span>Website for buying coins in FIFA</span>
+                    </div>
+                </div>
+
+                <div class="w-full hover:opacity-50 cursor-pointer rounded-lg border-4 border-green" v-on:click="setSlide(7)">
+                    <div class="w-full bg-white p-5 h-[200px] flex items-center">
+                        <img src="/assets/img/git7.webp" class="w-full h-full object-contain"">
+                    </div>
+                    <div class="my-4 px-6 w-full text-green font-bold text-3xl">
+                        <span>Systemads.in</span>
+                    </div>
+
+                    <div class="px-6 my-4 w-full text-slate-300 text-lg">
+                        <span>Internet traffic exchange</span>
+                    </div>
+                </div>
+
+                <div class="w-full hover:opacity-50 cursor-pointer rounded-lg border-4 border-green" v-on:click="setSlide(8)">
+                    <div class="w-full bg-white p-5 h-[200px] flex items-center">
+                        <img src="/assets/img/git8.webp" class="w-full h-full object-contain"">
+                    </div>
+                    <div class="my-4 px-6 w-full text-green font-bold text-3xl">
+                        <span>Elbay.ru</span>
+                    </div>
+
+                    <div class="px-6 my-4 w-full text-slate-300 text-lg">
+                        <span>Elbai business consulting company website</span>
+                    </div>
+                </div>
+
+            
+            </div>
+        </div>
+    </section>
+
+    <section class="w-full h-screen bg-gradient-to-t from-navy-100 to-navy-200 flex items-center" id="contacts">
+        <div class="w-max flex gap-10 mx-auto justify-between max-w-[1200px]">
+            <div class="w-full">
+                <div class="text-slate-200 text-5xl text-white font-bold text-left pb-5 border-b-2 border-green w-max   "><span>Contacts</span></div>
+                <div class="my-10 max-w-[1200px] text-white text-2xl text-left">
+                        <span>Write to me by email or telegram </span>
+                </div>
+                <div class="w-full border-2 py-5 px-7 border-slate-300 rounded-lg text-center mb-10 font-bold text-white">
+                    <span>E-Mail: vvkostikov77@gmail.com</span>
+                </div>
+                <div class="w-full border-2 py-5 px-7 border-slate-300 rounded-lg text-center mb-10 font-bold text-white">
+                    <span>Telegram: @aversens</span>
                 </div>
             </div>
         </div>
     </section>
+    
 </template>
+
 
 <script setup lang="ts">
     import { Particles } from '#components'
@@ -302,8 +467,6 @@
     const title = ref('Vladimir Kostikov - web developer')
     const description = ref('My App Description')
 
-    let project:number = 0;
-
     useHead({
         title,
         meta: [{
@@ -311,4 +474,19 @@
             content: description
         }]
     })
+</script>
+
+<script lang="ts">
+    let slide: number = ref(0);
+
+    function setSlide(id:number) {
+        slide.value = id
+    }
+
+    function scrollToElement(el:string) {
+        document.getElementById(el).scrollIntoView({
+            behavior: 'smooth'
+        });
+    }
+
 </script>
