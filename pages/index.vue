@@ -1,5 +1,5 @@
 <template>
-    <div class="fixed w-full top-0 left-0 h-full bg-[#333] rounded-xl overflow-hidden bg-opacity-50" v-if="slide">
+    <div class="fixed w-full top-0 left-0 h-full bg-[#333] rounded-xl overflow-hidden bg-opacity-50 z-[999]" v-if="slide">
         <component :is="Project" 
             :title="'Authmaster Telegram'" 
             :link="'https://github.com/VladimirKostikov/authmaster-telegram-authorization'"
@@ -63,10 +63,34 @@
             :description = "'Elbai business consulting company website'"
             v-if="slide == 8"
         />
+
+        <component :is="Project" 
+            :title="'AngelHelp'" 
+            :link="'https://angel-help.ru/'"
+            :img = "'/assets/img/git9.png'"
+            :description = "'Donation website'"
+            v-if="slide == 9"
+        />
+
+        <component :is="Project" 
+            :title="'Archetype-Design'" 
+            :link="'https://archetype-design.ru/'"
+            :img = "'/assets/img/git10.png'"
+            :description = "'Website for selling auto details'"
+            v-if="slide == 10"
+        />
+
+        <component :is="Project" 
+            :title="'Veravdelo'" 
+            :link="'https://veravdelo.ru/'"
+            :img = "'/assets/img/git11.png'"
+            :description = "'Donation website'"
+            v-if="slide == 11"
+        />
+
         <div @click="setSlide(0)" class="hover:border-2 hover:bg-green hover:bg-navy-100 hover:text-white cursor-pointer w-full p-3 bg-green text-center font-bold max-w-[540px] mx-auto left-0 right-0 fixed bottom-[70px] rounded-lg h-max">Close element</div>
     </div>
-    <section class="w-full h-screen flex items-center">
-        <component :is="Particles" />
+    <section class="w-full h-screen flex items-center bg-gradient-to-t from-navy-100 to-navy-200 p-0">
         <div class="w-max mx-auto text-white">
             <div class="uppercase text-white font-bold text-4xl text-center"><span>Hi, I'm</span></div>
             <div class="uppercase text-green font-bold text-7xl text-center my-6"><span>Vladimir Kostikov</span></div>
@@ -82,7 +106,11 @@
             <div class="w-full">
                 <div class="text-center lg:text-left text-slate-200 text-5xl text-white font-bold  pb-5 border-b-2 border-green lg:w-max   "><span>About me</span></div>
                 <div class="text-center lg:text-left my-10 max-w-[1200px] text-white text-2xl ">
-                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo at deleniti, commodi tenetur incidunt temporibus eius rem voluptate? Nam dolore illum exercitationem voluptatum libero unde, vitae fugit modi blanditiis cum doloremque vero ea voluptates odio itaque nemo molestias, corrupti aliquam veniam deleniti quia animi, tenetur culpa. Nostrum, libero voluptate.</span>
+                        <span>
+                            I'm Vladimir Kostikov and i'm full stack web developer. 
+                            I have been developing websites for more than four years.
+                            During this time, more than 50 orders of various subjects were completed: blog, online store, web applications and others
+                        </span>
                 </div>
             </div>
             <div class="w-full grid grid-cols-1 lg:grid-cols-2 items-center ">
@@ -335,6 +363,42 @@
                 <div class="text-slate-200 text-5xl text-white font-bold text-left pb-5 border-b-2 border-green w-max  mx-auto  "><span>Projects</span></div>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 justify-between">
+                <div class="w-full hover:opacity-50 cursor-pointer rounded-lg border-4 border-green" v-on:click="setSlide(11);">
+                    <div class="w-full bg-white p-5 h-[200px] flex items-center">
+                        <img src="/assets/img/git11.png" class="w-full h-full object-contain">
+                    </div>
+                    <div class="my-4 px-5 w-full text-green font-bold text-3xl">
+                        <span>Veravdelo</span>
+                    </div>
+
+                    <div class="px-6 my-4 w-full text-slate-300 text-lg">
+                        <span>Donation website</span>
+                    </div>
+                </div>
+                <div class="w-full hover:opacity-50 cursor-pointer rounded-lg border-4 border-green" v-on:click="setSlide(10);">
+                    <div class="w-full bg-white p-5 h-[200px] flex items-center">
+                        <img src="/assets/img/git10.png" class="w-full h-full object-contain">
+                    </div>
+                    <div class="my-4 px-5 w-full text-green font-bold text-3xl">
+                        <span>Archetype Design</span>
+                    </div>
+
+                    <div class="px-6 my-4 w-full text-slate-300 text-lg">
+                        <span>Website for selling auto details</span>
+                    </div>
+                </div>
+                <div class="w-full hover:opacity-50 cursor-pointer rounded-lg border-4 border-green" v-on:click="setSlide(9);">
+                    <div class="w-full bg-white p-5 h-[200px] flex items-center">
+                        <img src="/assets/img/git9.png" class="w-full h-full object-contain">
+                    </div>
+                    <div class="my-4 px-5 w-full text-green font-bold text-3xl">
+                        <span>AngelHelp</span>
+                    </div>
+
+                    <div class="px-6 my-4 w-full text-slate-300 text-lg">
+                        <span>Donation website</span>
+                    </div>
+                </div>
                 <div class="w-full hover:opacity-50 cursor-pointer rounded-lg border-4 border-green" v-on:click="setSlide(1);">
                     <div class="w-full bg-white p-5 h-[200px] flex items-center">
                         <img src="/assets/img/git2.jpg" class="w-full h-full object-contain">
@@ -461,11 +525,10 @@
 
 
 <script setup lang="ts">
-    import { Particles } from '#components'
     import { Project } from '#components'
 
     const title = ref('Vladimir Kostikov - web developer')
-    const description = ref('My App Description')
+    const description = ref('Vladimir Kostikov - fullstack web developer')
 
     useHead({
         title,
