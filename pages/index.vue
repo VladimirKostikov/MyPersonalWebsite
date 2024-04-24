@@ -512,10 +512,10 @@
                         <span>Write to me by email or telegram </span>
                 </div>
                 <div class="w-full border-2 py-5 px-7 border-slate-300 rounded-lg text-center mb-10 font-bold text-white">
-                    <span>E-Mail: vvkostikov77@gmail.com</span>
+                    <a href="mail:vvkostikov77@gmail.com" class="text-white">E-Mail: vvkostikov77@gmail.com</a>
                 </div>
                 <div class="w-full border-2 py-5 px-7 border-slate-300 rounded-lg text-center mb-10 font-bold text-white">
-                    <span>Telegram: @aversens</span>
+                    <a href="https://t.me/aversens" class="text-white">Telegram: @aversens</a>
                 </div>
             </div>
         </div>
